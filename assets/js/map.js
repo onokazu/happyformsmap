@@ -2,7 +2,9 @@
 
     var initMap = function ( container, settings ) {
         var latlng = settings.defaultLatlng ? settings.defaultLatlng.split( ',' ) : [ 40.69847, -73.95144 ],
-            zoom = settings.defaultZoom || 13;
+            zoom = settings.defaultZoom || 13,
+            map;
+
         map = L.map( $( container ).get( 0 ) ).setView( latlng, zoom );
         L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
