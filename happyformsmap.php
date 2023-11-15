@@ -3,6 +3,7 @@
  * Plugin Name: Happyforms Map
  * Description: Map field for Happyforms.
  * Version:     1.0.0
+ * Author:      onokazu
  * Text Domain: happyformsmap
  * Domain Path: /languages
  */
