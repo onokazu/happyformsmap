@@ -21,10 +21,10 @@ class HappyFormsMap_Admin {
 
     public function admin_enqueue_scripts() {
         wp_enqueue_script(
-			'leaflet',
-			'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.js',
-			[], HAPPYFORMSMAP_LEAFLET_VERSION, true
-		);
+            'leaflet',
+            'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.js',
+            [], HAPPYFORMSMAP_LEAFLET_VERSION, true
+        );
         wp_enqueue_script(
             'happyformsmap-map',
             HAPPYFORMSMAP_URL . '/assets/js/map.js',
@@ -32,15 +32,15 @@ class HappyFormsMap_Admin {
         );
 
         wp_enqueue_style(
-			'leaflet',
-			'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.css',
-			[], HAPPYFORMSMAP_LEAFLET_VERSION
-		);
+            'leaflet',
+            'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.css',
+            [], HAPPYFORMSMAP_LEAFLET_VERSION
+        );
         wp_enqueue_style(
-			'happyformsmap-map',
-			HAPPYFORMSMAP_URL . '/assets/css/map.css',
-			[ 'leaflet' ], HAPPYFORMSMAP_VERSION
-		);
+            'happyformsmap-map',
+            HAPPYFORMSMAP_URL . '/assets/css/map.css',
+            [ 'leaflet' ], HAPPYFORMSMAP_VERSION
+        );
     }
 
     public function manage_posts_extra_tablenav( $which ) {
@@ -105,7 +105,7 @@ class HappyFormsMap_Admin {
 
         $message = happyforms_get_message_controller()->get( $id );
         $form_controller = happyforms_get_form_controller();
-		$form = $form_controller->get( $message['form_id'] );
+        $form = $form_controller->get( $message['form_id'] );
 
         foreach ( $form['parts'] as $part ) {
             if ( HAPPYFORMSMAP_PART_TYPE === $part['type'] ) {

@@ -4,12 +4,12 @@
         var latlng = settings.defaultLatlng ? settings.defaultLatlng.split( ',' ) : [ 40.69847, -73.95144 ],
             zoom = settings.defaultZoom || 13;
         map = L.map( $( container ).get( 0 ) ).setView( latlng, zoom );
-		L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    		maxZoom: 18,
+        L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
             scrollWheelZoom: false,
-    		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-		} ).addTo( map );
-		map.attributionControl.setPrefix( '' );
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        } ).addTo( map );
+        map.attributionControl.setPrefix( '' );
 
         return map;
     }
