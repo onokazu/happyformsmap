@@ -3,7 +3,8 @@
     var initMap = function ( container, settings ) {
         var latlng = settings.defaultLatlng ? settings.defaultLatlng.split( ',' ) : [ 40.69847, -73.95144 ],
             zoom = settings.defaultZoom || 13,
-            map;
+            map,
+            controlPosition = settings.mapControlPosition || 'bottomright';
 
         map = L.map( $( container ).get( 0 ), {
             zoomControl: false,
@@ -14,10 +15,10 @@
         L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
         } ).addTo( map );
-        L.control.zoom( { position: 'bottomright' } ).addTo( map );
+        L.control.zoom( { position: controlPosition } ).addTo( map );
         if (L.control.fullscreen) {
             map.addControl( new L.control.fullscreen( {
-                position: 'bottomright',
+                position: controlPosition,
                 forceSeparateButton: true,
             } ) );
         }

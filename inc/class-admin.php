@@ -66,9 +66,9 @@ class HappyFormsMap_Admin {
             'data-part-label' => esc_attr( $part['label'] ),
             'data-map-class' => 'happyformsmap-admin-map widefat',
             'data-map-height' => 400,
+            'data-map-control-position' => 'bottomright',
             'data-default-latlng' => esc_attr( $part['default_latlng'] ),
             'data-default-zoom' => intval( $part['default_zoom'] ),
-            'data-fullscreen-element' => '#posts-filter',
         ];
         if ( isset( $close_label ) ) {
             $attributes['data-label-close'] = esc_attr( $close_label );
