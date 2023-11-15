@@ -39,7 +39,7 @@ if ( ! function_exists( 'happyformsmap_register_map_styles' ) ):
             HAPPYFORMSMAP_URL . '/assets/css/map.css',
             [ 'leaflet' ], HAPPYFORMSMAP_VERSION
         );
-        if ($includeAll) {
+        if ( $includeAll ) {
             $func(
                 'leaflet-control-fullscreen',
                 HAPPYFORMSMAP_URL . '/assets/lib/Control.FullScreen/Control.FullScreen.css',
