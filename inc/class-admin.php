@@ -74,16 +74,16 @@ class HappyFormsMap_Admin {
     }
 
     protected function _getMapButtonHtml( $form_id, $part, $label = null, $close_label = null ) {
-        if ( ! isset( $label ) ) $label = __( 'Show on Map', 'happyformsmap' );
         $attributes = [
             'data-container' => '#posts-filter',
             'data-target' => '.wp-list-table.posts',
             'data-item-container' => 'tr',
-            'data-item-data' => '.submission-data',
+            'data-item-content' => '.submission-data',
+            'data-item-url' => '.row-actions .edit a',
             'data-form-id' => $form_id,
             'data-part' => $part['id'],
             'data-part-label' => esc_attr( $part['label'] ),
-            'data-map-class' => 'happyformsmap-admin-map',
+            'data-map-class' => 'happyformsmap-admin-map widefat',
             'data-map-height' => 400,
             'data-default-latlng' => esc_attr( $part['default_latlng'] ),
             'data-default-zoom' => intval( $part['default_zoom'] ),
@@ -96,7 +96,7 @@ class HappyFormsMap_Admin {
             $attr_string .= ' ' . $attr_key . '="' . $attr_value . '"';
         }
         return '<button type="button" class="button happyformsmap-map-trigger"' . $attr_string .'>'
-            . esc_html( $label )
+            . esc_html( isset( $label ) ? $label : __( 'Show on Map', 'happyformsmap' ) )
             . '</button>';
     }
 

@@ -3,7 +3,6 @@
 }
 
 .happyformsmap-admin-map {
-    width:100%;
     border-top:1px solid #c3c4c7;
 }
 
@@ -15,4 +14,12 @@
     background: #f0f0f1;
     border-color: #0a4b78;
     color: #0a4b78;
+}
+
+.happyformsmap-map-popup-title {
+    font-size: 1.2em;
+    margin: 0;
+}
+.happyformsmap-map-popup-content {
+    margin: 1em 0;
 }

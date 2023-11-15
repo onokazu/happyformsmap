@@ -25,15 +25,57 @@
                 var $latlng = $( _e ),
                     latlng = $latlng.data( 'latlng' ) || $latlng.text();
                 if ( latlng.length ) {
-                    var marker = L.marker( latlng.split( ',' ) ).addTo( map );
-                    marker.bindPopup( $item.find( settings.itemData ).html() );
-                    bounds.push( marker.getLatLng(), { maxWidth: 400, className: 'happyformsmap-map-marker-content' } );
+                    var marker = L.marker( latlng.split( ',' ) ).addTo( map ),
+                        content = getItemContent( $item, settings );
+                    if ( content.length ) marker.bindPopup( content, { maxWidth: 400, className: 'happyformsmap-map-popup' } );
+                    bounds.push( marker.getLatLng() );
                 }
             } );
         } );
         if ( bounds.length ) {
-            map.fitBounds( bounds );
+            map.fitBounds( bounds, { padding: [15, 15] } );
         }
+    }
+
+    var getItemContent = function ( item, settings ) {
+        var $item = $(item), title = '', isTitle = false, content = '', url;
+
+        $item.find( settings.itemContent ).each( function ( i, e ) {
+            content += $( e ).prop( 'outerHTML' );
+        } );
+        if (content.length) {
+            content = '<div class="happyformsmap-map-popup-content">' + content + '</div>';
+        }
+        if ( settings.itemTitle ) {
+            title = $item.find( settings.itemTitle ).text();
+            isTitle = true;
+        }
+        if ( settings.itemUrl ) {
+            url = $item.find( settings.itemUrl );
+            if ( url.length ) {
+                if ( url[0].tagName === 'A' ) {
+                    if ( ! title.length ) {
+                        title = url.text();
+                    }
+                    url = url.attr( 'href' );
+                } else {
+                    url = url.text();
+                    if ( ! title.length ) {
+                        title = url;
+                    }
+                }
+            }
+        }
+        if ( title.length && url.length ) {
+            title = $('<a></a>').attr('href', url).text(title).prop('outerHTML');
+            if ( isTitle ) {
+                content = '<h3 class="happyformsmap-map-popup-title">' + title + '</h3>' + content;
+            } else {
+                content += '<div class="happyformsmap-map-popup-link">' + title + '</div>';
+            }
+        }
+
+        return content;
     }
     
     var createMap = function ( target, settings ) {
