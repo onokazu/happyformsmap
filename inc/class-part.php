@@ -219,7 +219,6 @@ class HappyFormsMap_Part extends HappyForms_Form_Part {
     }
 
     public function print_frontend_scripts() {
-        
         $this->register_scripts( true );
     }
 

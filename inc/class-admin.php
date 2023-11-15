@@ -28,7 +28,7 @@ class HappyFormsMap_Admin {
         global $typenow, $wp_list_table;
 
         if ( $which !== 'top'
-            ||  $typenow !== 'happyforms-message'
+            || $typenow !== 'happyforms-message'
             || ! $wp_list_table->has_items()
             || empty( $_GET['form_id'] )
             || ( ! $form_id = intval( $_GET['form_id'] ) )
@@ -54,7 +54,7 @@ class HappyFormsMap_Admin {
         }
     }
 
-    protected function _getMapButtonHtml( $form_id, $part, $label = null, $close_label = null ) {
+    protected function _getMapButtonHtml( $form_id, $part, $label, $close_label = null ) {
         $attributes = [
             'data-container' => '#posts-filter',
             'data-target' => '.wp-list-table.posts',
@@ -78,7 +78,7 @@ class HappyFormsMap_Admin {
             $attr_string .= ' ' . $attr_key . '="' . $attr_value . '"';
         }
         return '<button type="button" class="button happyformsmap-map-trigger"' . $attr_string .'>'
-            . esc_html( isset( $label ) ? $label : __( 'Show on Map', 'happyformsmap' ) )
+            . esc_html( $label )
             . '</button>';
     }
 
