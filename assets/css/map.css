@@ -1,0 +1,18 @@
+.happyformsmap-map .leaflet-control a {
+    text-decoration: none !important;
+}
+
+.happyformsmap-admin-map {
+    width:100%;
+    border-top:1px solid #c3c4c7;
+}
+
+.tablenav button.happyformsmap-map-trigger {
+    margin-left: 8px;
+}
+
+.tablenav button.happyformsmap-map-trigger-open {
+    background: #f0f0f1;
+    border-color: #0a4b78;
+    color: #0a4b78;
+}

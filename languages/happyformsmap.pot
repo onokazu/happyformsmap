@@ -1,0 +1,80 @@
+# Copyright (C) 2023 
+# This file is distributed under the same license as the Happyforms Map plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Happyforms Map 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/happyformsmap\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-11-15T01:17:19+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.4.0\n"
+"X-Domain: happyformsmap\n"
+
+#. Plugin Name of the plugin
+msgid "Happyforms Map"
+msgstr ""
+
+#. Description of the plugin
+msgid "Map field for Happyforms."
+msgstr ""
+
+#: inc/class-admin.php:66
+msgid "Map - %s"
+msgstr ""
+
+#: inc/class-admin.php:69
+#: inc/class-admin.php:77
+msgid "Show on Map"
+msgstr ""
+
+#: inc/class-admin.php:69
+msgid "Close Map"
+msgstr ""
+
+#: inc/class-part.php:11
+msgid "Map"
+msgstr ""
+
+#: inc/class-part.php:12
+msgid "For collecting map locations."
+msgstr ""
+
+#: inc/class-part.php:138
+msgid "View on Google Maps"
+msgstr ""
+
+#: inc/template-part-customize.php:4
+msgid "Label"
+msgstr ""
+
+#: inc/template-part-customize.php:10
+msgid "Show"
+msgstr ""
+
+#: inc/template-part-customize.php:14
+msgid "Hide"
+msgstr ""
+
+#: inc/template-part-customize.php:20
+msgid "Hint"
+msgstr ""
+
+#: inc/template-part-customize.php:24
+msgid "Default lat/lng"
+msgstr ""
+
+#: inc/template-part-customize.php:28
+msgid "Default zoom level"
+msgstr ""
+
+#: inc/template-part-customize.php:40
+msgid "Require an answer"
+msgstr ""
+
+#: inc/template-part-customize.php:47
+msgid "Additional CSS class(es)"
+msgstr ""
