@@ -5,13 +5,22 @@
             zoom = settings.defaultZoom || 13,
             map;
 
-        map = L.map( $( container ).get( 0 ) ).setView( latlng, zoom );
-        L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        map = L.map( $( container ).get( 0 ), {
+            zoomControl: false,
             maxZoom: 18,
             scrollWheelZoom: false,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-        } ).addTo( map );
+        } ).setView( latlng, zoom );
         map.attributionControl.setPrefix( '' );
+        L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+        } ).addTo( map );
+        L.control.zoom( { position: 'bottomright' } ).addTo( map );
+        if (L.control.fullscreen) {
+            map.addControl( new L.control.fullscreen( {
+                position: 'bottomright',
+                forceSeparateButton: true,
+            } ) );
+        }
 
         return map;
     }

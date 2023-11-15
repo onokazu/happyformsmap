@@ -20,27 +20,8 @@ class HappyFormsMap_Admin {
     }
 
     public function admin_enqueue_scripts() {
-        wp_enqueue_script(
-            'leaflet',
-            'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.js',
-            [], HAPPYFORMSMAP_LEAFLET_VERSION, true
-        );
-        wp_enqueue_script(
-            'happyformsmap-map',
-            HAPPYFORMSMAP_URL . '/assets/js/map.js',
-            [ 'leaflet' ], HAPPYFORMSMAP_VERSION, true
-        );
-
-        wp_enqueue_style(
-            'leaflet',
-            'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.css',
-            [], HAPPYFORMSMAP_LEAFLET_VERSION
-        );
-        wp_enqueue_style(
-            'happyformsmap-map',
-            HAPPYFORMSMAP_URL . '/assets/css/map.css',
-            [ 'leaflet' ], HAPPYFORMSMAP_VERSION
-        );
+        happyformsmap_register_map_scripts( true );
+        happyformsmap_register_map_styles( true );
     }
 
     public function manage_posts_extra_tablenav( $which ) {
@@ -55,7 +36,7 @@ class HappyFormsMap_Admin {
         ) {
             $map_parts = [];
             foreach ( $form['parts'] as $part ) {
-                if ( HAPPYFORMSMAP_PART_TYPE === $part['type'] ) {
+                if ( 'map' === $part['type'] ) {
                     $map_parts[] = $part;
                 }
             }
@@ -87,6 +68,7 @@ class HappyFormsMap_Admin {
             'data-map-height' => 400,
             'data-default-latlng' => esc_attr( $part['default_latlng'] ),
             'data-default-zoom' => intval( $part['default_zoom'] ),
+            'data-fullscreen-element' => '#posts-filter',
         ];
         if ( isset( $close_label ) ) {
             $attributes['data-label-close'] = esc_attr( $close_label );
@@ -108,7 +90,7 @@ class HappyFormsMap_Admin {
         $form = $form_controller->get( $message['form_id'] );
 
         foreach ( $form['parts'] as $part ) {
-            if ( HAPPYFORMSMAP_PART_TYPE === $part['type'] ) {
+            if ( 'map' === $part['type'] ) {
                 $value = happyforms_get_message_part_value( $message['parts'][$part['id']], $part );
                 echo '<span class="happyformsmap-map-latlng" data-part="' . $part['id'] . '" data-latlng="' . $value . '"></span>';
             }

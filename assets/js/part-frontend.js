@@ -17,13 +17,16 @@
         },
 
         initMap: function () {
-            var map = L.map( this.$map.get( 0 ) ).setView( this.getLatLng(), this.getZoom() );
-            L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            var map = L.map( this.$map.get( 0 ), {
+                zoomControl: false,
                 maxZoom: 18,
                 scrollWheelZoom: false,
+            } ).setView( this.getLatLng(), this.getZoom() );
+            map.attributionControl.setPrefix( '' );
+            L.tileLayer( 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             } ).addTo( map );
-            map.attributionControl.setPrefix( '' );
+            L.control.zoom( { position: 'bottomright' } ).addTo( map );
 
             return map;
         },

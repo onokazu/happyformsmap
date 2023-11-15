@@ -2,7 +2,7 @@
 
 class HappyFormsMap_Part extends HappyForms_Form_Part {
 
-    public $type = HAPPYFORMSMAP_PART_TYPE;
+    public $type = 'map';
 
     const LAT_REGEX = '/^-?([1-8]?[1-9]|[1-9]?0)\.{1}\d{4,}/',
         LNG_REGEX = '/^-?((([1]?[0-7][0-9]|[1-9]?[0-9])\.{1}\d{5,}$)|[1]?[1-8][0]\.{1}0{4,}$)/';
@@ -200,27 +200,13 @@ class HappyFormsMap_Part extends HappyForms_Form_Part {
 
     public function register_styles( $enqueue = false )
     {
-        $func = $enqueue ? 'wp_enqueue_style' : 'wp_register_style';
-        $func(
-            'leaflet',
-            'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.css',
-            [], HAPPYFORMSMAP_LEAFLET_VERSION
-        );
-        $func(
-            'happyformsmap-map',
-            HAPPYFORMSMAP_URL . '/assets/css/map.css',
-            [ 'leaflet' ], HAPPYFORMSMAP_VERSION
-        );    
+        happyformsmap_register_map_styles( $enqueue, false );
     }
 
     public function register_scripts( $enqueue = false )
     {
+        happyformsmap_register_map_scripts( $enqueue, false );
         $func = $enqueue ? 'wp_enqueue_script' : 'wp_register_script';
-        $func(
-            'leaflet',
-            'https://unpkg.com/leaflet@' . HAPPYFORMSMAP_LEAFLET_VERSION . '/dist/leaflet.js',
-            [], HAPPYFORMSMAP_LEAFLET_VERSION, true
-        );
         $func(
             'happyformsmap-part',
             HAPPYFORMSMAP_URL . '/assets/js/part-frontend.js',
