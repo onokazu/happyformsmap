@@ -43,7 +43,7 @@
             } );
         } );
         if ( bounds.length ) {
-            map.fitBounds( bounds, { padding: [15, 15] } );
+            map.fitBounds( bounds, { padding: [20, 20] } );
         }
     }
 
@@ -121,9 +121,9 @@
         var $button = $(button);
         if ( mapIsVisible ) {
             if ( $button.data( 'label-close' ) ) {
-                $button.data( 'label-open', $button.text() );
-                $button.text( $button.data( 'label-close' ) );
-            } else {
+                $button.data( 'label-open', $button.text() )
+                    .text( $button.data( 'label-close' ) );
+            } else{
                 $button.addClass( 'happyformsmap-map-trigger-open' );
             }
         } else {

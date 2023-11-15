@@ -10,7 +10,6 @@
     margin: 1em 0;
 }
 
-
 .happyformsmap-admin-map {
     border-top:1px solid #c3c4c7;
 }
@@ -20,7 +19,5 @@
 }
 
 .tablenav button.happyformsmap-map-trigger-open {
-    background: #f0f0f1;
-    border-color: #0a4b78;
-    color: #0a4b78;
+    box-shadow: inset -5px -5px 10px 0px rgba(255, 255, 255, 0.5), inset 5px 5px 10px 0px rgba(0, 0, 0, 0.2)
 }
