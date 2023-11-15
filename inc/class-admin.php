@@ -25,32 +25,32 @@ class HappyFormsMap_Admin {
     }
 
     public function manage_posts_extra_tablenav( $which ) {
-        global $typenow;
+        global $typenow, $wp_list_table;
 
-        if ( $which !== 'top' ) return;
+        if ( $which !== 'top'
+            ||  $typenow !== 'happyforms-message'
+            || ! $wp_list_table->has_items()
+            || empty( $_GET['form_id'] )
+            || ( ! $form_id = intval( $_GET['form_id'] ) )
+            || ( ! $form = happyforms_get_form_controller()->get($form_id) )
+        ) return;
 
-        if ( $typenow === 'happyforms-message' 
-            && isset( $_GET['form_id'] )
-            && ( $form_id = intval( $_GET['form_id'] ) )
-            && ( $form = happyforms_get_form_controller()->get($form_id) )
-        ) {
-            $map_parts = [];
-            foreach ( $form['parts'] as $part ) {
-                if ( 'map' === $part['type'] ) {
-                    $map_parts[] = $part;
-                }
+        $map_parts = [];
+        foreach ( $form['parts'] as $part ) {
+            if ( 'map' === $part['type'] ) {
+                $map_parts[] = $part;
             }
-            if ( ! empty( $map_parts ) ) {
-                echo '<div class="alignleft actions">';
-                if ( count( $map_parts ) > 1 ) {
-                    foreach ( $map_parts as $part ) {
-                        echo $this->_getMapButtonHtml( $form_id, $part, sprintf( __( 'Map - %s', 'happyformsmap' ), $part['label'] ) );
-                    }
-                } else {
-                    echo $this->_getMapButtonHtml( $form_id, $map_parts[0], __( 'Show on Map', 'happyformsmap' ), __( 'Close Map', 'happyformsmap' ) );
+        }
+        if ( ! empty( $map_parts ) ) {
+            echo '<div class="alignleft actions">';
+            if ( count( $map_parts ) > 1 ) {
+                foreach ( $map_parts as $part ) {
+                    echo $this->_getMapButtonHtml( $form_id, $part, sprintf( __( 'Map - %s', 'happyformsmap' ), $part['label'] ) );
                 }
-                echo '</div>';
+            } else {
+                echo $this->_getMapButtonHtml( $form_id, $map_parts[0], __( 'Show on Map', 'happyformsmap' ), __( 'Close Map', 'happyformsmap' ) );
             }
+            echo '</div>';
         }
     }
 
