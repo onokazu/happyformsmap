@@ -13,9 +13,9 @@
     happyForms.classes.views.parts.map = happyForms.classes.views.Part.extend( {
         template: '#happyformsmap-customize-template',
 
-        events: _.extend({}, happyForms.classes.views.Part.prototype.events, {
+        events: _.extend( {}, happyForms.classes.views.Part.prototype.events, {
             'change [data-bind=default_latlng],[data-bind=default_zoom]': 'onDefaultMapSettingChange',
-        }),
+        } ),
 
         onDefaultMapSettingChange: function ( e ) {
             var $input = $( e.target ),

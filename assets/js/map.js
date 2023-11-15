@@ -77,7 +77,7 @@
             }
         }
         if ( title.length && url.length ) {
-            title = $('<a></a>').attr('href', url).text(title).prop('outerHTML');
+            title = $( '<a></a>' ).attr( 'href', url ).text( title ).prop( 'outerHTML' );
             if ( isTitle ) {
                 content = '<h3 class="happyformsmap-map-popup-title">' + title + '</h3>' + content;
             } else {
@@ -103,7 +103,7 @@
             loadMarkers( map, $target, settings );
             $map.on( 'happyformsmap:hidden', function() { 
                 map.closePopup(); 
-            });
+            } );
 
             return $map;
         }
@@ -157,7 +157,7 @@
             $map.slideToggle( 'fast', function() {
                 var visible = $map.is( ':visible' );
                 updateButton( $button, visible );
-                if (visible) {
+                if ( visible ) {
                     $map.trigger( 'happyformsmap:shown' );
                     closeOthersShown( settings );
                 } else {
@@ -170,6 +170,6 @@
             $map.trigger( 'happyformsmap:shown' );
             closeOthersShown( settings );
         }
-    });
+    } );
 
 } )( jQuery );

@@ -41,7 +41,7 @@
             if ( latlng.length > 0 ) {
                 _latlng = latlng.split( ',' );
                 if ( _latlng.length === 2 ) {
-                    return _latlng.map(function ( coord ) { return coord.trim() });
+                    return _latlng.map( function ( coord ) { return coord.trim() } );
                 }
             }
             
